@@ -23,10 +23,10 @@ const Login = () => {
             password: Yup.string()
                 .required('Password required')
                 .min(6, 'Password too short')
-                .max(28, 'Password too large')}
-            )}
+                .max(28, 'Password too large'),
+            })}
             onSubmit={(values, actions) => {
-                const vals={...values};                
+                const vals = {...values};                
                 actions.resetForm();
                 fetch("http://localhost:4000/auth/login", {
                     method: "POST",
@@ -36,7 +36,7 @@ const Login = () => {
                     },
                     body : JSON.stringify(vals),
                 }).catch(err => {
-                    return;
+                    return ;
                 }).then(res => {
                     if (!res || !res.ok || res.status >= 400) {
                         return;
@@ -71,7 +71,7 @@ const Login = () => {
                 />
 
                 <ButtonGroup padding="1rem">
-                    <Button colorScheme="teal">Log in</Button>
+                    <Button colorScheme="teal" type="submit">Log in</Button>
                     <Button onClick={()=>navigate("/register")}>Create Account</Button>
                 </ButtonGroup>
             </VStack>

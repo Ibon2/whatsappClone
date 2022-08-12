@@ -37,7 +37,7 @@ const SignUp = () => {
                     },
                     body : JSON.stringify(vals),
                 }).catch(err => {
-                    return;
+                    return err;
                 }).then(res => {
                     if (!res || !res.ok || res.status >= 400) {
                         return;
