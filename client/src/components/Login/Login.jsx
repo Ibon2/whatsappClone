@@ -10,6 +10,7 @@ import * as Yup from 'yup';
 import TextField from './TextField';
 import { useNavigate } from 'react-router';
 
+
 const Login = () => {
     const navigate = useNavigate();
     return (
@@ -17,14 +18,14 @@ const Login = () => {
         initialValues= {{ username: "", password:""} }
         validationSchema= {Yup.object({
             username: Yup.string()
-                .required('Username required')
-                .min(6, 'Username too short')
-                .max(28, 'Username too large'),
+                        .required('Username required')
+                        .min(6, 'Username too short')
+                        .max(28, 'Username too large'),
             password: Yup.string()
                 .required('Password required')
                 .min(6, 'Password too short')
                 .max(28, 'Password too large'),
-            })}
+        })}
             onSubmit={(values, actions) => {
                 const vals = {...values};                
                 actions.resetForm();
@@ -68,6 +69,7 @@ const Login = () => {
                 placeholder="Enter password"
                 autoComplete="off"
                 label="Password"
+                type="password"
                 />
 
                 <ButtonGroup padding="1rem">

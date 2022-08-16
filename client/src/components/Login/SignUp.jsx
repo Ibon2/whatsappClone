@@ -18,14 +18,14 @@ const SignUp = () => {
         initialValues= {{ username: "", password:""} }
         validationSchema= {Yup.object({
             username: Yup.string()
-                .required('Username required')
-                .min(6, 'Username too short')
-                .max(28, 'Username too large'),
+                        .required('Username required')
+                        .min(6, 'Username too short')
+                        .max(28, 'Username too large'),
             password: Yup.string()
                 .required('Password required')
                 .min(6, 'Password too short')
-                .max(28, 'Password too large')}
-            )}
+                .max(28, 'Password too large'),
+        })}
             onSubmit={(values, actions) => {
                 const vals = {...values};                
                 actions.resetForm();
@@ -69,10 +69,11 @@ const SignUp = () => {
                 placeholder="Enter password"
                 autoComplete="off"
                 label="Password"
+                type="password"
                 />
 
                 <ButtonGroup padding="1rem">
-                    <Button colorScheme="teal">Create Account</Button>
+                    <Button colorScheme="teal" type="submit">Create Account</Button>
                     <Button onClick={()=>navigate("/login")} leftIcon={<ArrowBackIcon/>}>Back</Button>
                 </ButtonGroup>
             </VStack>

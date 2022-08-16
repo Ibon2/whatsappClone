@@ -1,5 +1,6 @@
 const Yup = require("yup");
 
+
 const formSchema = Yup.object({
     username: Yup.string()
                 .required('Username required')
@@ -16,7 +17,6 @@ const validateForm = (req,res) =>{
     formSchema
     .validate(formData)
     .catch(err => {
-        res.status(422).send();
         console.log(err.errors);
     })
     .then(valid=>{
