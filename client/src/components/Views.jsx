@@ -7,14 +7,14 @@ import { useContext } from "react";
 import { AccountContext } from "./AccountContext";
 
 const Views = () => {
-  const {user} = useContext(AccountContext);
-  return user.loggedIn === null ? <Text>Loading...</Text> :(
+  const { user } = useContext(AccountContext);
+  return user.loggedIn === null ? <Text>Loading...</Text> : (
     <Routes>
-      <Route path="/" element={<Login/>}/>
-      <Route path="/register" element={<SignUp/>}/>
-      <Route path="*" element={<Login/>}/>
-      <Route element={<PrivateRoutes/>}>
-        <Route path="/home" element={<Text>Hi Welcome home</Text>}/>
+      <Route path="/" element={<Login />} />
+      <Route path="/register" element={<SignUp />} />
+      <Route path="*" element={<Login />} />
+      <Route element={<PrivateRoutes />}>
+        <Route path="/home" element={<Text>Hi Welcome home</Text>} />
       </Route>
     </Routes>
   );

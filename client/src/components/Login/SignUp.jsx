@@ -6,7 +6,7 @@ import {
     Heading,
     Text
 } from '@chakra-ui/react';
-import { Formik,Form } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import TextField from './TextField';
 import { useNavigate } from 'react-router';
@@ -15,24 +15,24 @@ import { AccountContext } from '../AccountContext';
 import { useState } from 'react';
 
 const SignUp = () => {
-    const {setUser} = useContext(AccountContext)
+    const { setUser } = useContext(AccountContext)
     const navigate = useNavigate();
-    const [error,setError] = useState(null);
+    const [error, setError] = useState(null);
     return (
         <Formik
-        initialValues= {{ username: "", password:""} }
-        validationSchema= {Yup.object({
-            username: Yup.string()
-                        .required('Username required')
-                        .min(6, 'Username too short')
-                        .max(28, 'Username too large'),
-            password: Yup.string()
-                .required('Password required')
-                .min(6, 'Password too short')
-                .max(28, 'Password too large'),
-        })}
+            initialValues={{ username: "", password: "" }}
+            validationSchema={Yup.object({
+                username: Yup.string()
+                    .required('Username required')
+                    .min(6, 'Username too short')
+                    .max(28, 'Username too large'),
+                password: Yup.string()
+                    .required('Password required')
+                    .min(6, 'Password too short')
+                    .max(28, 'Password too large'),
+            })}
             onSubmit={(values, actions) => {
-                const vals = {...values};                
+                const vals = { ...values };
                 actions.resetForm();
                 fetch("http://localhost:4000/auth/register", {
                     method: "POST",
@@ -40,7 +40,7 @@ const SignUp = () => {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body : JSON.stringify(vals),
+                    body: JSON.stringify(vals),
                 }).catch(err => {
                     return err;
                 }).then(res => {
@@ -49,15 +49,15 @@ const SignUp = () => {
                     }
                     return res.json();
                 })
-                .then(data => {
-                    if(!data ) return;
-                    setUser({...data})
-                    if(data.status){
-                        setError(data.status)
-                    }else if(data.loggedIn){
-                        navigate("/home");
-                    }
-                });
+                    .then(data => {
+                        if (!data) return;
+                        setUser({ ...data })
+                        if (data.status) {
+                            setError(data.status)
+                        } else if (data.loggedIn) {
+                            navigate("/home");
+                        }
+                    });
             }}
         >
             <VStack
@@ -69,27 +69,27 @@ const SignUp = () => {
                 spacing="1rem"
             >
                 <Heading>Sign Up</Heading>
-                <Text as="p" color= "red.500">
+                <Text as="p" color="red.500">
                     {error}
                 </Text>
-                <TextField name="username" 
-                placeholder="Enter username"
-                autoComplete="off"
-                label="Username"
+                <TextField name="username"
+                    placeholder="Enter username"
+                    autoComplete="off"
+                    label="Username"
                 />
-                <TextField name="password" 
-                placeholder="Enter password"
-                autoComplete="off"
-                label="Password"
-                type="password"
+                <TextField name="password"
+                    placeholder="Enter password"
+                    autoComplete="off"
+                    label="Password"
+                    type="password"
                 />
 
                 <ButtonGroup padding="1rem">
                     <Button colorScheme="teal" type="submit">Create Account</Button>
-                    <Button onClick={()=>navigate("/login")} leftIcon={<ArrowBackIcon/>}>Back</Button>
+                    <Button onClick={() => navigate("/login")} leftIcon={<ArrowBackIcon />}>Back</Button>
                 </ButtonGroup>
             </VStack>
-            </Formik>
+        </Formik>
     );
 };
 
