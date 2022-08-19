@@ -6,14 +6,11 @@ import Chat from './Chat';
 import Sidebar from './Sidebar';
 export const FriendContext = createContext();
 const Home = () => {
-    const [friendList, setFriendList] = useState([
-        { username: "John Doe", connected: false },
-        { username: "Steven", connected: true },
-        { username: "Steven", connected: true }]);
+    const [friendList, setFriendList] = useState([]);
     return (
         <FriendContext.Provider value={{ friendList, setFriendList }} >
             <Grid templateColumns="repeat(10, 1fr)" h="100vh" as={Tabs}>
-                <GridItem colSpan="3" borderRight="1px solid grey">
+                <GridItem colSpan="3" borderRight="1px solid gray">
                     <Sidebar />
                 </GridItem>
                 <GridItem colSpan="7">
