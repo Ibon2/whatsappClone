@@ -18,9 +18,11 @@ const Chat = () => {
             w="100%"
             textAlign="center"
             fontSize="lg">
-            
-                    <Text>No friends : (Click add friend to start chatting)</Text>  
-            
+            <TabPanels>
+                <TabPanel>
+                    <Text>No friends : (Click add friend to start chatting)</Text>
+                </TabPanel>
+            </TabPanels>
         </VStack>
     );
 };
