@@ -31,6 +31,7 @@ const UserContext = ({ children }) => {
                 }
                 navigate("/home");
                 setUser({ ...data });
+
             })
     }, [])
     return <AccountContext.Provider value={{ user, setUser }}>

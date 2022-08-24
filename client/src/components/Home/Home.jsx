@@ -1,10 +1,10 @@
 import { Grid, GridItem, Tabs } from '@chakra-ui/react';
-import React from 'react'
-import { useState } from 'react';
-import { createContext } from 'react';
+import { useState,createContext } from 'react';
 import Chat from './Chat';
 import Sidebar from './Sidebar';
+
 export const FriendContext = createContext();
+
 const Home = () => {
     const [friendList, setFriendList] = useState([]);
     return (

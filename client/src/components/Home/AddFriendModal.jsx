@@ -19,7 +19,7 @@ const AddFriendModal = ({ isOpen, onClose }) => {
         <ModalHeader>Add a Friend!</ModalHeader>
         <ModalCloseButton />
         <Formik initialValues={{ friendName: "" }}
-          onSubmit={() => {
+          onSubmit={values => {
             onClose();
           }}
           validationSchema={friendSchema}
@@ -34,7 +34,7 @@ const AddFriendModal = ({ isOpen, onClose }) => {
               />
             </ModalBody>
             <ModalFooter>
-              <Button colorScheme='blue' mr={3} type="submit">
+              <Button colorScheme='blue' type="submit">
                 Submit
               </Button>
             </ModalFooter>

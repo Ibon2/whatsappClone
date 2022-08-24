@@ -4,7 +4,7 @@ import { AccountContext } from "./AccountContext";
 
 const useAuth = () => {
     const { user } = useContext(AccountContext);
-    return user && user.loggedIn
+    return user && user.loggedIn;
 }
 
 const PrivateRoutes = () => {
